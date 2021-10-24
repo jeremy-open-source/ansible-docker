@@ -1,13 +1,24 @@
 FROM ubuntu:20.10
 
-RUN     DEBIAN_FRONTEND=noninteractive apt-get update \
-    &&  DEBIAN_FRONTEND=noninteractive apt-get install -y \
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN     apt-get update \
+    &&  apt-get install -y \
             nano \
             apt-transport-https \
+            ca-certificates \
             curl \
             ansible \
             openssh-client \
-            iputils-ping
+            iputils-ping \
+            gnupg \
+            apt-utils
 
 RUN     mkdir -p ~/.ssh \
     &&  chmod 700 ~/.ssh
+
+# Install Dopper CLI
+RUN     curl -sLf --retry 3 --tlsv1.2 --proto "=https" 'https://packages.doppler.com/public/cli/gpg.DE2A7741A397C129.key' | apt-key add - \
+    &&  echo "deb https://packages.doppler.com/public/cli/deb/debian any-version main" | tee /etc/apt/sources.list.d/doppler-cli.list \
+    &&  apt-get update \
+    &&  apt-get install -y doppler
