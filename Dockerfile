@@ -12,7 +12,8 @@ RUN     apt-get update \
             openssh-client \
             iputils-ping \
             gnupg \
-            apt-utils
+            apt-utils \
+            rsync
 
 RUN     mkdir -p ~/.ssh \
     &&  chmod 700 ~/.ssh
