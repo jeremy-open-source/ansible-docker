@@ -14,7 +14,8 @@ RUN     apt-get update \
             iputils-ping \
             gnupg \
             apt-utils \
-            rsync
+            rsync \
+            git
 
 RUN     mkdir -p ~/.ssh \
     &&  chmod 700 ~/.ssh
