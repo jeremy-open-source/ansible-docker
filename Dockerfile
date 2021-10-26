@@ -9,6 +9,7 @@ RUN     apt-get update \
             ca-certificates \
             curl \
             ansible \
+            ansible-lint \
             openssh-client \
             iputils-ping \
             gnupg \
