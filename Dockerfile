@@ -15,7 +15,8 @@ RUN     apt-get update \
             gnupg \
             apt-utils \
             rsync \
-            git
+            git \
+            make
 
 RUN     mkdir -p ~/.ssh \
     &&  chmod 700 ~/.ssh
