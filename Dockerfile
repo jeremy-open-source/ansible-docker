@@ -18,6 +18,9 @@ RUN     apt-get update \
             git \
             make
 
+# Install ansible additions
+RUN     ansible-galaxy collection install community.general
+
 RUN     mkdir -p ~/.ssh \
     &&  chmod 700 ~/.ssh
 
